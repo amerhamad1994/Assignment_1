@@ -40,7 +40,7 @@ public class DetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(DetailsActivity.this, InfoActivity.class);
             intent.putExtra("item_name", items.get(position));
             intent.putExtra("service_type", serviceType);
-            intent.putExtra("item_position", position);  // Send position to retrieve detailed info
+            intent.putExtra("item_position", position);
             startActivity(intent);
         });
     }

@@ -1,18 +1,9 @@
 package com.example.myapplication;
 
-import android.os.Bundle;
-import android.widget.Spinner;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +19,7 @@ public class InfoActivity extends AppCompatActivity {
 
         TextView nameTextView = findViewById(R.id.item_name);
         TextView priceTextView = findViewById(R.id.item_price);
-        Spinner descriptionSpinner = findViewById(R.id.item_description_spinner);
+        TextView descriptionTextView = findViewById(R.id.item_description);
         Button buyNowButton = findViewById(R.id.buy_now_button);
 
         nameTextView.setText(itemName);
@@ -50,14 +41,10 @@ public class InfoActivity extends AppCompatActivity {
             price = giftItem.getPrice();
         }
 
+
         priceTextView.setText(String.format("Price: $%.2f", price));
+        descriptionTextView.setText(description);
 
-        // Populate the spinner with the description
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{description});
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        descriptionSpinner.setAdapter(spinnerAdapter);
-
-        // Set click listener for Buy Now button to open dialer with phone number
         buyNowButton.setOnClickListener(view -> {
             Intent dialIntent = new Intent(Intent.ACTION_DIAL);
             dialIntent.setData(Uri.parse("tel:0598542233"));
